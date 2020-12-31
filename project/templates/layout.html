@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+        <link href="/static/favicon.ico" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/d70aba65b5.js" crossorigin="anonymous"></script>
+
+        <title>Bookshelf: {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-blue border">
+            <a class="navbar-brand" href="/">Bookshelf</a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav mr-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/">Shelves</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/books">Books</a></li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#addShelfModal"><span class="icon-btn">Add Shelf</span><i class="fas fa-plus"></i></button>
+                        <!--<a href="/add-book.html" class="btn btn-primary"><span class="icon-btn">Add Book</span><i class="fas fa-plus"></i></a>-->
+                        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        {% if get_flashed_messages() %}
+            <header>
+                <div class="alert alert-primary border text-center" role="alert">
+                    {{ get_flashed_messages() | join(" ") }}
+                </div>
+            </header>
+        {% endif %}
+
+        <main class="container p-5">
+
+
+        <!-- Start modal -->
+        <div class="modal fade" id="addShelfModal" tabindex="-1" role="dialog" aria-labelledby="addShelfModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addShelfModalTitle">Add Bookshelf</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/add-shelf" method="post">
+                          <div class="form-group">
+                              <input autocomplete="off" autofocus class="form-control" name="shelf-name" placeholder="Shelf Name" type="text">
+                          </div>
+                          <button class="btn btn-primary" type="submit">Add Shelf</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End modal -->
+
+        <!-- Start modal -->
+        <div class="modal fade" id="updateShelfModal" tabindex="-1" role="dialog" aria-labelledby="updateShelfModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateShelfModalTitle">Update Bookshelf</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/update-shelf" method="post">
+                          <div class="form-group">
+                              <input autocomplete="off" class="shelf-id" name="shelf-id" type="hidden" value="">
+                              <input autocomplete="off" autofocus class="form-control shelf-name" name="shelf-name" placeholder="Shelf Name" type="text" value="">
+                          </div>
+                          <button class="btn btn-primary" type="submit">Update Shelf</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End modal -->
+
+        <!-- Start modal -->
+        <div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addBookModalTitle">Add Book</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/add-book" method="post">
+                          <div class="form-group">
+                              <input autocomplete="off" autofocus class="form-control" name="book-title" placeholder="Book Title" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control" name="book-subtitle" placeholder="Book Subtitle" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control" name="description" placeholder="Book Description" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control" name="authors" placeholder="Book Authors" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control" name="categories" placeholder="Book Categories" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control" name="published-date" placeholder="Book Published Date" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control" name="page-count" placeholder="Book Page Count" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control" name="isbn-10" placeholder="Book ISBN 10 Number" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control" name="isbn-13" placeholder="Book ISBN 13 Number" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control" name="image-url" placeholder="Book Image URL" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control shelf-id" name="shelf-id" type="hidden" value="">
+                          </div>
+                          <button class="btn btn-primary" type="submit">Add Book</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End modal -->
+
+        <!-- Start modal -->
+        <div class="modal fade" id="updateBookModal" tabindex="-1" role="dialog" aria-labelledby="updateBookModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateBookModalTitle">Add Book</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/update-book" method="post">
+                          <div class="form-group">
+                              <label for="bookTitle">Book Title</label>
+                              <input id="bookTitle" autocomplete="off" autofocus class="form-control book-title" name="book-title" placeholder="Book Title" type="text">
+                          </div>
+                          <div class="form-group">
+                              <label for="bookSubtitle">Book Subitle</label>
+                              <input id="bookSubtitle" autocomplete="off" class="form-control book-subtitle" name="book-subtitle" placeholder="Book Subtitle" type="text">
+                          </div>
+                          <div class="form-group">
+                              <label for="description">Description</label>
+                              <input id="description" autocomplete="off" class="form-control description" name="description" placeholder="Book Description" type="text">
+                          </div>
+                          <div class="form-group">
+                              <label for="authors">Authors</label>
+                              <input id="authors" autocomplete="off" class="form-control authors" name="authors" placeholder="Book Authors" type="text">
+                          </div>
+                          <div class="form-group">
+                              <label for="categories">Categories</label>
+                              <input id="categories" autocomplete="off" class="form-control categories" name="categories" placeholder="Book Categories" type="text">
+                          </div>
+                          <div class="form-group">
+                              <label for="publishedDate">Published Date</label>
+                              <input id="publishedDate" autocomplete="off" class="form-control published-date" name="published-date" placeholder="Book Published Date" type="text">
+                          </div>
+                          <div class="form-group">
+                              <label for="pageCount">Page Count</label>
+                              <input id="pageCount" autocomplete="off" class="form-control page-count" name="page-count" placeholder="Book Page Count" type="text">
+                          </div>
+                          <div class="form-group">
+                              <label for="isbn10">ISBN 10</label>
+                              <input id="isbn10" autocomplete="off" class="form-control isbn-10" name="isbn-10" placeholder="Book ISBN 10 Number" type="text">
+                          </div>
+                          <div class="form-group">
+                              <label for="isbn10">ISBN 13</label>
+                              <input id="isbn10" autocomplete="off" class="form-control isbn-13" name="isbn-13" placeholder="Book ISBN 13 Number" type="text">
+                          </div>
+                          <div class="form-group">
+                              <label for="imageUrl">Image URL</label>
+                              <input id="imageUrl" autocomplete="off" class="form-control image-url" name="image-url" placeholder="Book Image URL" type="text">
+                          </div>
+                          <div class="form-group">
+                              <input autocomplete="off" class="form-control book-id" name="book-id" type="hidden" value="">
+                          </div>
+                          <button class="btn btn-primary" type="submit">Update Book</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End modal -->
+            {% block main %}{% endblock %}
+        </main>
+
+        <footer class="small text-center text-muted">
+            <!--Data provided for free by <a href="https://iextrading.com/developer">IEX</a>. View <a href="https://iextrading.com/api-exhibit-a/">IEX’s Terms of Use</a>.-->
+        </footer>
+
+        {% if request.path == url_for('index') %}
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        {% endif %}
+
+        <script>
+            // This pattern borrowed from https://getbootstrap.com/docs/4.0/components/modal/#varying-modal-content
+            $('#updateShelfModal').on('show.bs.modal', function (event) {
+              var button = $(event.relatedTarget) // Button that triggered the modal
+              var shelf_name = button.data('shelf_name') // Extract info from data-* attributes
+              var shelf_id = button.data('shelf_id') // Extract info from data-* attributes
+
+              // Update the modal's content.
+              var modal = $(this)
+              modal.find('.modal-body input.shelf-name').val(shelf_name)
+              modal.find('.modal-body input.shelf-id').val(shelf_id)
+            });
+            $('#addBookModal').on('show.bs.modal', function (event) {
+              var button = $(event.relatedTarget) // Button that triggered the modal
+              var shelf_name = button.data('shelf_name') // Extract info from data-* attributes
+              var shelf_id = button.data('shelf_id') // Extract info from data-* attributes
+
+              // Update the modal's content.
+              var modal = $(this)
+              modal.find('#addBookModalTitle').text('Add Book to ' + shelf_name)
+              modal.find('.modal-body input.shelf-id').val(shelf_id)
+            });
+            $('#updateBookModal').on('show.bs.modal', function (event) {
+              var button = $(event.relatedTarget) // Button that triggered the modal
+              var book_data = button.data('book_data') // Extract info from data-* attributes
+              console.log("book_data: ", book_data)
+              console.log("book_data['book_title']: ", book_data["book_title"])
+
+              // Update the modal's content.
+              var modal = $(this)
+              modal.find('#updateBookModalTitle').text('Update ' + book_data["book_title"])
+              modal.find('.modal-body input.book-id').val(book_data["id"])
+              modal.find('.modal-body input.book-title').val(book_data["book_title"])
+              modal.find('.modal-body input.book-subtitle').val(book_data["book_subtitle"])
+              modal.find('.modal-body input.description').val(book_data["description"])
+              modal.find('.modal-body input.authors').val(book_data["authors"])
+              modal.find('.modal-body input.categories').val(book_data["categories"])
+              modal.find('.modal-body input.published-date').val(book_data["published_date"])
+              modal.find('.modal-body input.page-count').val(book_data["page_count"])
+              modal.find('.modal-body input.isbn-10').val(book_data["isbn_10"])
+              modal.find('.modal-body input.isbn-13').val(book_data["isbn_13"])
+              modal.find('.modal-body input.image-url').val(book_data["image_url"])
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Transaction Time</th>
+          <th scope="col">Transaction Type</th>
+          <th scope="col">Symbol</th>
+          <th scope="col">Name</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- This pattern borrowed from https://www.geeksforgeeks.org/python-using-for-loop-in-flask/ -->
+        {%for i in range(0, stocksLength)%}
+            <tr>
+              <td>{{stocks[i]["created_at"]}}</td>
+              <td>{{stocks[i]["transaction_type"]}}</td>
+              <td>{{stocks[i]["symbol"]}}</td>
+              <td>{{stocks[i]["name"]}}</td>
+              <td>{{stocks[i]["shares"]}}</td>
+              <td>{{stocks[i]["price"]}}</td>
+            </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+{% endblock %}

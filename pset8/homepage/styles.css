@@ -1,0 +1,108 @@
+/**
+ * Color scheme generated at https://coolors.co/cacaaa-eec584-c8ab83-55868c-7f636e
+ * #CACAAA - Sage
+ * #EEC584 - Gold Crayola
+ * #C8AB83 - Light French Beige
+ * #55868C - Steel Teal
+ * #7F636E - Old Lavender
+ **/
+
+/*Basic Setup*/
+a,
+a:hover,
+a:visited {
+    color: #7F636E;
+    text-decoration: underline;
+}
+a.btn {
+    color: inherit;
+    text-decoration: none;
+}
+a.btn.btn-primary {
+    color: #FFFFFF;
+}
+.btn-primary,
+.btn-primary:focus {
+    background-color: #C8AB83;
+    color: #FFFFFF;
+    border-color: #C8AB83;
+}
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #7F636E;
+    color: #FFFFFF;
+    border-color: #7F636E;
+}
+.beige-bg {
+    background-color: #C8AB83;
+}
+i.fas {
+    font-size: 4rem;
+    color: #C8AB83;
+}
+
+/*Layout*/
+.about,
+.recipes {
+    margin-top: 25px;
+}
+
+/*Navbar*/
+.navbar {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.navbar a {
+    text-decoration: none;
+}
+
+/*Homepage banner*/
+.banner {
+    background-color: #7F636E;
+    color: #FFFFFF;
+}
+.banner .col-5 {
+    padding-right: 0;
+}
+.banner .btn-outline-light:hover {
+    color: #7F636E;
+}
+
+/*Homepage styles*/
+.homepage-cols {
+    margin-top: 40px;
+}
+.info-columns h3 {
+    color: #C8AB83;
+    margin-bottom: 30px;
+}
+.info-columns .col {
+    margin: 0 5%;
+}
+
+/*Recipes page styles*/
+.card-deck {
+    margin: 25px 0;
+}
+.card {
+    width: 18rem;
+    margin: 20px auto;
+}
+.card img {
+    max-height: 200px;
+    overflow: hidden;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+.card .fas {
+    margin: 70px 0;
+}
+.caption {
+    font-size: 0.8rem;
+}
+.breaker {
+    margin-top: 10px;
+    display: block;
+}

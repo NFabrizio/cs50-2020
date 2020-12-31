@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Bookshelf
+{% endblock %}
+
+{% block main %}
+    <h1>Welcome to your bookshelf</h1>
+
+    <div class="col dashboard-content">
+      {% if rowLength %}
+        {% for shelf in shelfRows %}
+          <div class="row shelf bg-beige">
+            <a href="/shelves/{{shelf['id']}}" class="col">
+              <div>
+                {{shelf["shelf_name"]}}
+              </div>
+            </a>
+            <span class="action-buttons col-2 offset-10">
+              <form action="/remove-shelf" method="post">
+                <input autocomplete="off" class="form-control" name="shelf-id" type="hidden" value={{shelf["id"]}}>
+                <button type="submit" class="action-icon" aria-label="Delete">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+              </form>
+              <button type="button" class="action-icon" data-toggle="modal" data-target="#updateShelfModal" data-shelf_name={{shelf["shelf_name"]}} data-shelf_id={{shelf["id"]}} aria-label="Update shelf">
+                <i class="fas fa-edit"></i>
+              </button>
+            </span>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="row">
+          <div class="col empty-content">
+            <i class="fas fa-layer-group fa-7x content-icon"></i>
+            <p>It looks like you haven't created any shelves yet.</p>
+          </div>
+        </div>
+      {% endif %}
+      <div class="row add-shelf">
+        <div class="col">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#addShelfModal"><span class="icon-btn">Add Shelf</span><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+{% endblock %}

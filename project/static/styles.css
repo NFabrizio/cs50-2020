@@ -1,0 +1,150 @@
+/**
+ * Site color scheme
+ * #001524 - Rich Black FOGRA (dark blue)
+ * #15616D - Ming (aquamarine)
+ * #FFECD1 - Blanched Almond (beige)
+ * #FF7D00 - Amber SAE ECE (orange)
+ * #78290F - Kobe (brown)
+ **/
+
+.bg-blue {
+    background-color: #001524;
+}
+.bg-aqua {
+    background-color: #15616D;
+}
+.bg-beige {
+    background-color: #FFECD1;
+}
+.bg-orange {
+    background-color: #FF7D00;
+}
+.bg-brown {
+    background-color: #78290F;
+}
+
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+nav .btn {
+    margin-right: 15px;
+}
+
+.btn-primary {
+    background-color: #15616D;
+    border-color: #15616D;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #001524;
+    border-color: #001524;
+}
+a:not([href]):not([tabindex]).btn-primary {
+    color: #FFFFFF;
+}
+.icon-btn {
+    margin-right: 15px;
+}
+
+.content-icon {
+    color: #C6C6C6;
+    margin: 35px 0;
+}
+.dashboard-content form {
+    margin: 0;
+}
+.dashboard-content .shelf {
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid #78290F;
+    border-radius: 5px;
+    position: relative;
+}
+.dashboard-content .action-buttons {
+    position: absolute;
+}
+.action-buttons .action-icon {
+    margin: 0 5px;
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    z-index: 100;
+}
+.shelf a,
+.shelf a:visited {
+    color: #001524;
+    text-decoration: none;
+}
+.shelf:hover,
+.shelf a:hover,
+.shelf:hover a {
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #15616D;
+}
+.shelf:hover .fas,
+.shelf:hover .action-icon,
+.shelf:hover .fas:hover,
+.shelf:hover .action-icon:hover {
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.add-shelf,
+.add-book{
+    margin: 5px 0;
+    padding: 10px;
+}
+.hidden {
+    visibility: hidden;
+}
+.empty-content {
+    margin: 25px 0;
+}
+
+.card .action-icon {
+    cursor: pointer;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+.form-group label {
+    display: block;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+.table.table-striped {
+    margin-bottom: 0;
+}
+.table-striped tbody tr.grand-total {
+    background-color: #FFFFFF;
+}

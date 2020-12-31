@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    All Books
+{% endblock %}
+
+{% block main %}
+    <h1>All Books</h1>
+
+    <div class="row shelf-content justify-content-center">
+        <div class="row justify-content-around text-center">
+          {% if bookRowsLength %}
+            {% for book in bookRows %}
+                <div class="col">
+                    <!--This card pattern borrowed from https://getbootstrap.com/docs/4.1/components/card/-->
+                    <div class="card">
+                        {% if book["image_url"] %}
+                            <img class="card-img-top" src={{book["image_url"]}} alt={{book["book_title"]}}>
+                        {% else %}
+                            <div class="row">
+                              <div class="col empty-content">
+                                    <i class="fas fa-book fa-7x content-icon"></i>
+                              </div>
+                            </div>
+                        {% endif %}
+                        <!--<div class="caption">Image & recipe courtesy of <a href="https://hip2save.com/recipes/marshmallow-fluff-sandwich-marshmallow-creme/">hip2save.com</a></div>-->
+                        <div class="card-body">
+                            <h5 class="card-title">{{book["book_title"]}}</h5>
+                            <p class="card-text"><b>Subtitle:</b> {{book["book_subtitle"]}}</p>
+                            <p class="card-text"><b>Description:</b> {{book["description"]}}</p>
+                            <span class="action-buttons col">
+                              <button type="button" class="action-icon update-book-{{book['id']}}" data-toggle="modal" data-target="#updateBookModal" aria-label="Update book">
+                                <i class="fas fa-edit"></i>
+                              </button>
+                              <a href="/books/{{book['id']}}" class="action-icon" aria-label="View book">
+                                <i class="fas fa-eye"></i>
+                              </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $('.update-book-{{book["id"]}}').data('book_data', {{book|tojson}});
+                </script>
+            {% endfor %}
+          {% else %}
+            <div class="row">
+              <div class="col empty-content">
+                    <i class="fas fa-book fa-7x content-icon"></i>
+                    <p>It looks like you haven't added any books to this shelf yet.</p>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+    </div>
+{% endblock %}

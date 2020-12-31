@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    C$50 Finance
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Name</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+          <th scope="col">Total</th>
+          <th scope="col">More Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- This pattern borrowed from https://www.geeksforgeeks.org/python-using-for-loop-in-flask/ -->
+        {%for i in range(0, stocksLength)%}
+            <tr>
+              <td>{{stocks[i]["symbol"]}}</td>
+              <td>{{stocks[i]["name"]}}</td>
+              <td>{{stocks[i]["total_shares"]}}</td>
+              <td>{{stocks[i]["price"]}}</td>
+              <td>{{stocks[i]["total"]}}</td>
+              <td>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#buyModal" data-symbol={{stocks[i]["symbol"]}} data-name={{stocks[i]["name"]}}>Buy</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#sellModal" data-symbol={{stocks[i]["symbol"]}} data-name={{stocks[i]["name"]}}>Sell</button>
+              </td>
+            </tr>
+            <!-- Start modal -->
+            <div class="modal fade" id="buyModal" tabindex="-1" role="dialog" aria-labelledby="buyModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="buyModalTitle"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                          <form action="/buy" method="post">
+                              <div class="form-group">
+                                  <input autocomplete="off" readonly autofocus class="form-control" name="form-type" type="hidden" value="index-modal">
+                                  <input autocomplete="off" readonly autofocus class="form-control symbol" name="symbol" placeholder="Stock symbol" type="hidden" value="">
+                                  <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Number of shares" type="text">
+                                  <button class="btn btn-primary" type="submit">Buy Shares</button>
+                              </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End modal -->
+            <!-- Start modal -->
+            <div class="modal fade" id="sellModal" tabindex="-1" role="dialog" aria-labelledby="sellModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="sellModalTitle"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                          <form action="/sell" method="post">
+                              <div class="form-group">
+                                  <input autocomplete="off" readonly autofocus class="form-control" name="form-type" type="hidden" value="index-modal">
+                                  <input autocomplete="off" readonly autofocus class="form-control symbol" name="symbol" placeholder="Stock symbol" type="hidden" value="">
+                                  <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="Number of shares" type="text">
+                                  <button class="btn btn-primary" type="submit">Sell Shares</button>
+                              </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End modal -->
+        {%endfor%}
+        <tr>
+          <td>CASH</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{cash}}</td>
+          <td></td>
+        </tr>
+        <tr class="grand-total">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>{{grand_total}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+        // This pattern borrowed from https://getbootstrap.com/docs/4.0/components/modal/#varying-modal-content
+        $('#buyModal').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var name = button.data('name') // Extract info from data-* attributes
+          var symbol = button.data('symbol')
+
+          // Update the modal's content.
+          var modal = $(this)
+          modal.find('#buyModalTitle').text('Buy Shares of ' + name)
+          modal.find('.modal-body input.symbol').val(symbol)
+        });
+        $('#sellModal').on('show.bs.modal', function (event) {
+          var button = $(event.relatedTarget) // Button that triggered the modal
+          var name = button.data('name') // Extract info from data-* attributes
+          var symbol = button.data('symbol')
+
+          // Update the modal's content.
+          var modal = $(this)
+          modal.find('#sellModalTitle').text('Sell Shares of ' + name)
+          modal.find('.modal-body input.symbol').val(symbol)
+        });
+    </script>
+{% endblock %}

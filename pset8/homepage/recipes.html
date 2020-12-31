@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/d70aba65b5.js" crossorigin="anonymous"></script>
+        <title>Fluffernutter Recipes - Fluffernutter Kingdom</title>
+    </head>
+    <body>
+        <!-- This navbar pattern borrowed from https://getbootstrap.com/docs/4.1/components/navbar/#nav -->
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-dark beige-bg">
+                <a class="navbar-brand" href="index.html">Fluffernutter Kingdom</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Recipes <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="row justify-content-center recipes">
+                <div class="col">
+                    <h1>Recipes</h1>
+                    <div class="row justify-content-around text-center">
+                        <!-- Start modal -->
+                        <!--This modal pattern borrowed from https://getbootstrap.com/docs/4.1/components/modal/-->
+                        <div class="modal fade" id="fluffernutterSandwichModal" tabindex="-1" role="dialog" aria-labelledby="fluffernutterSandwichModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="fluffernutterSandwichModalTitle">Fluffernutter Sandwich</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Ingredients</h6>
+                                            <ul>
+                                                <li>2 slices of white bread</li>
+                                                <li>creamy peanut butter</li>
+                                                <li>marshmallow fluff</li>
+                                            </ul>
+                                        <h6>Directions</h6>
+                                            <ol>
+                                                <li>Spread peanut butter and marshmallow fluff on to the bread slices, sandwich together, and enjoy!</li>
+                                            </ol>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End modal -->
+                        <div class="col-4 col-lg-3">
+                            <!--This card pattern borrowed from https://getbootstrap.com/docs/4.1/components/card/-->
+                            <div class="card">
+                                <img class="card-img-top" src="./images/fluffernutter-sandwich.jpg" alt="Fluffernutter Sandwich">
+                                <div class="caption">Image & recipe courtesy of <a href="https://hip2save.com/recipes/marshmallow-fluff-sandwich-marshmallow-creme/">hip2save.com</a></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Fluffernutter Sandwich</h5>
+                                    <p class="card-text">Creamy peanut butter and spreadable marshmallow fluff is a winning sandwich combination!</p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fluffernutterSandwichModal">Get Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start modal -->
+                        <div class="modal fade" id="chocolateFluffernutterModal" tabindex="-1" role="dialog" aria-labelledby="chocolateFluffernutterModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="chocolateFluffernutterModalTitle">Chocolate Fluffernutter</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Ingredients</h6>
+                                            <ul>
+                                                <li>1/4 cup chunky peanut butter</li>
+                                                <li>4 thick slices white bread</li>
+                                                <li>1 tablespoon chocolate syrup</li>
+                                                <li>1/4 cup marshmallow creme</li>
+                                            </ul>
+                                        <h6>Directions</h6>
+                                            <ol>
+                                                <li>Spread peanut butter on two slices of bread. </li>
+                                                <li>Drizzle with chocolate syrup; spread with marshmallow creme. </li>
+                                                <li>Top with remaining bread.</li>
+                                            </ol>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End modal -->
+                        <div class="col-4 col-lg-3">
+                            <div class="card">
+                                <img class="card-img-top" src="./images/chocolate-fluffernutter.jpg" alt="Chocolate Fluffernutter">
+                                <div class="caption">Image & recipe courtesy of <a href="https://www.tasteofhome.com/recipes/chocolate-fluffernutter-sandwiches/">tasteofhome.com</a></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Chocolate Fluffernutter Sandwich</h5>
+                                    <p class="card-text">hese fun sandwiches are sure to be greeted with smiles when they're served with sliced bananas and a glass of milk for a snack or even lunch.</p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#chocolateFluffernutterModal">Get Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start modal -->
+                        <div class="modal fade" id="fluffernutterCookiesModal" tabindex="-1" role="dialog" aria-labelledby="fluffernutterCookiesModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="fluffernutterCookiesModalTitle">Fluffernutter Sandwich Cookies</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Ingredients</h6>
+                                            <ul>
+                                                <li>1 and 1/4 cups (6 1/4 ounces) all-purpose flour</li>
+                                                <li>1/2 teaspoon baking soda</li>
+                                                <li>1/2 teaspoon ground cinnamon</li>
+                                                <li>1/4 teaspoon salt</li>
+                                                <li>10 tablespoons (1 1/4 sticks) unsalted butter, softened to room temperature</li>
+                                                <li>1/2 cup (about 4 1/2 ounces) dark brown sugar, firmly packed</li>
+                                                <li>1/4 cup (about 1 3/4 ounces) sugar</li>
+                                                <li>3/4 cup creamy unsalted peanut butter</li>
+                                                <li>2 large eggs, lightly beaten</li>
+                                                <li>2 teaspoons vanilla extract</li>
+                                                <li>1/2 cup quick oats</li>
+                                                <li class="breaker">For Assembly:</li>
+                                                <li>1/2 cup creamy unsalted peanut butter</li>
+                                                <li>1/2 cup marshmallow cream</li>
+                                            </ul>
+                                        <h6>Directions</h6>
+                                            <ol>
+                                                <li>Prepare two large baking sheets with parchment paper. In a large bowl whisk together flour, baking soda, cinnamon, and salt. Set aside.</li>
+                                                <li>In the bowl of an electric stand mixer fitted with a paddle attachment, cream the butter and sugars together on medium speed until fully incorporated. Add peanut butter and vanilla, and mix on medium speed until incorporated, scraping down the sides of the bowl as needed. Add eggs, mix until incorporated, then slowly incorporate the flour mixture on low speed. When just combined, stir in oats. Cover and chill the dough until it is firm enough for scooping, about 2 hours or up to overnight.</li>
+                                                <li>Move oven rack to the center position and preheat oven to 350°F. Scoop out 1 tablespoon worth of dough per cookie and roll it into a ball. Place cookie balls on a large plate or tray and freeze them for 15 minutes. Spacing the cookies about 2 inches apart, place dough balls onto prepared baking sheet. Gently flatten the cookies and use the tines of a fork to press down lightly making a crosshatch design on top of each cookie. Bake for until edges are light golden brown, about 10 minutes. Do not overbake. Remove from oven and cool in pan for 3 minutes then transfer to a wire rack to cool completely.</li>
+                                                <li>Once cookies have cooled completely, spread with peanut butter and marshmallow cream and form into sandwiches. Store in an airtight container to retain freshness.</li>
+                                            </ol>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End modal -->
+                        <div class="col-4 col-lg-3">
+                            <div class="card">
+                                <img class="card-img-top" src="./images/fluffernutter-cookies.jpg" alt="Fluffernutter Cookies">
+                                <div class="caption">Image & recipe courtesy of <a href="https://www.seriouseats.com/recipes/2013/06/fluffernutter-peanut-butter-marshmallow-sandwich-cookies-recipe.html">seriouseats.com</a></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Fluffernutter Sandwich Cookies</h5>
+                                    <p class="card-text">These are intended to be soft cookies, so you'll want to be careful not to over bake them. They should retain their softness for several days.</p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fluffernutterCookiesModal">Get Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start modal -->
+                        <div class="modal fade" id="fluffernutterRitzwichModal" tabindex="-1" role="dialog" aria-labelledby="fluffernutterRitzwichModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="fluffernutterRitzwichModalTitle">Fluffernutter Ritzwiches</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Ingredients</h6>
+                                            <ul>
+                                                <li>24 RITZ crackers</li>
+                                                <li>1/2 cup peanut butter</li>
+                                                <li>1/2 cup marshmallow fluff</li>
+                                            </ul>
+                                        <h6>Directions</h6>
+                                            <ol>
+                                                <li>Arrange 24 RITZ crackers out face-side down. </li>
+                                                <li>Spread or pipe 2 tsp of peanut butter on 12 of the cracker and marshmallow fluff on the other 12. </li>
+                                                <li>Sandwich a peanut butter and a marshmallow fluff cracker together and enjoy!</li>
+                                            </ol>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End modal -->
+                        <div class="col-4 col-lg-3">
+                            <div class="card">
+                                <img class="card-img-top" src="./images/fluffernutter-ritzwiches.jpg" alt="Fluffernutter Ritzwiches">
+                                <div class="caption">Image & recipe courtesy of <a href="https://www.sugarandsoul.co/fluffernutter-ritzwiches-recipe/">sugarandsoul.co</a></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Fluffernutter Ritzwiches</h5>
+                                    <p class="card-text">These Fluffernutter RITZwiches are a fun mix of two childhood classics! Who doesn’t love peanut butter and marshmallow fluff sandwiched between two buttery RITZ crackers!</p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fluffernutterRitzwichModal">Get Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start modal -->
+                        <div class="modal fade" id="deepFriedFluffernutterModal" tabindex="-1" role="dialog" aria-labelledby="deepFriedFluffernutterModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deepFriedFluffernutterModalTitle">Deep-Fried Fluffernutter</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Ingredients</h6>
+                                            <ul>
+                                                <li>3 cups vegetable oil</li>
+                                                <li>2 slices sandwich bread</li>
+                                                <li>3 tablespoons peanut butter </li>
+                                                <li>1/2 banana, thinly sliced </li>
+                                                <li>5 tablespoons marshmallow creme, cold </li>
+                                                <li>1/3 cup all-purpose flour </li>
+                                                <li>2 eggs, beaten</li>
+                                                <li>1/2 cup panko breadcrumbs </li>
+                                                <li>Pinch Maldon salt </li>
+                                            </ul>
+                                        <h6>Directions</h6>
+                                            <ol>
+                                                <li>In a 10- or 12-inch saute pan, heat the oil to 350 degrees F, verifying the temperature with a candy thermometer.</li>
+                                                <li>While the oil heats, spread the peanut butter on one slice of bread, and top it with the sliced banana.</li>
+                                                <li>Spread the marshmallow creme on the second slice of bread, and put your sandwich together; the marshmallow creme should be very cold so it doesn't get too runny when fried.</li>
+                                                <li>Put the flour, eggs and panko in three separate bowls large enough to fit the sandwich.</li>
+                                                <li>Dust the entire sandwich in flour, then dredge it in the eggs, and, with a dry hand, coat it in panko.</li>
+                                                <li>Carefully lower the sandwich into the hot oil, and fry until the bottom side is golden brown, about 2 minutes. With tongs or two forks, flip the sandwich and fry on the reverse side until golden brown.</li>
+                                                <li>With a spatula, move the sandwich from the pan to a plate. Sprinkle it with salt, and serve.</li>
+                                            </ol>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End modal -->
+                        <div class="col-4 col-lg-3">
+                            <div class="card">
+                                <i class="fas fa-feather-alt card-img-top"></i>
+                                <div class="card-body">
+                                    <h5 class="card-title">Deep-Fried Fluffernutter</h5>
+                                    <p class="card-text">The name speaks for itself!</p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deepFriedFluffernutterModal">Get Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="fluffernutterPieModal" tabindex="-1" role="dialog" aria-labelledby="fluffernutterPieModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="fluffernutterPieModalTitle">Fluffernutter Pie</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Ingredients</h6>
+                                            <ul>
+                                                <li>1 pie crust (refrigerated, frozen, or homemade)</li>
+                                                <li>1-2 bananas sliced about 1/8-inch thin</li>
+                                                <li>2 cups heavy whipping cream</li>
+                                                <li>1 cup creamy peanut butter</li>
+                                                <li>8 ounces cream cheese, softened</li>
+                                                <li>3/4 cup powdered sugar</li>
+                                                <li>2 egg whites</li>
+                                                <li>1/4 teaspoon cream of tartar</li>
+                                                <li>7 ounces marshmallow fluff</li>
+                                                <li>1/4 cup honey roasted peanuts, chopped</li>
+                                            </ul>
+                                        <h6>Directions</h6>
+                                            <ol>
+                                                <li>Fit a roll-out pie crust in a 9-inch pie pan. Crimp the edges and bake according to package directions. *Or follow our made-from-scratch instructions. </li>
+                                                <li>Once cooled, place a layer of banana slices over the bottom of the baked pie crust.</li>
+                                                <li>Use a whisk attachment in an electric mixer to whip the cream until it forms stiff peaks. Move the whipped cream to another bowl, set aside. Then use the mixer to whip the cream cheese until fluffy. Once the cream cheese is very soft, whip the sugar and peanut butter into the cream cheese.</li>
+                                                <li>Gently whip the whipped cream back into the mixture one third at a time. Spread the mixture into the pie crust and chill for 1-2 hours.</li>
+                                                <li>Once the pie is thoroughly chilled, whip the egg whites and cream of tartar until it forms stiff peaks. Then gently whip in the marshmallow fluff.</li>
+                                                <li>Swirl the fluff over the top of the pie, bringing it completely to the edges of the crust. Sprinkle the top with peanuts.</li>
+                                                <li>Turn the broiler on low. Place the pie in the oven and carefully toast the top to desired color. This could take as little as 30 seconds, or up to a couple minutes. Do not take your eyes off the pie. Chill again until ready to serve.</li>
+                                            </ol>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End modal -->
+                        <div class="col-4 col-lg-3">
+                            <div class="card">
+                                <img class="card-img-top" src="./images/fluffernutter-pie.jpg" alt="Fluffernutter Pie">
+                                <div class="caption">Image & recipe courtesy of <a href="https://www.aspicyperspective.com/fluffiest-fluffernutter-pie/">aspicyperspective.com</a></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Fluffernutter Pie</h5>
+                                    <p class="card-text">A simple decadent pie with peanut butter, banana, and marshmallow filling. This classic American pie is a true crowd-pleaser!</p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fluffernutterPieModal">Get Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Start modal -->
+                        <div class="modal fade" id="fluffernutterFrenchToastModal" tabindex="-1" role="dialog" aria-labelledby="fluffernutterFrenchToastModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered text-left" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="fluffernutterFrenchToastModalTitle">Fluffernutter French Toast</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h6>Ingredients</h6>
+                                            <ul>
+                                                <li>2 brioche rolls, sliced open</li>
+                                                <li>2 tablespoons peanut butter</li>
+                                                <li>2 tablespoons marshmallow fluff</li>
+                                                <li>2 eggs</li>
+                                                <li>2 tablespoons heavy cream</li>
+                                                <li>3 tablespoons sugar</li>
+                                                <li>1/2 teaspoon vanilla extract</li>
+                                                <li>2-3 tablespoons butter for frying</li>
+                                                <li>Powdered sugar for serving (optional)</li>
+                                            </ul>
+                                        <h6>Directions</h6>
+                                            <ol>
+                                                <li>Flip each brioche roll so that the shiny, exterior sides of the buns are now facing each other. (This allows the bread to soak up more of the egg batter, making a more flavorful and moist French toast!)</li>
+                                                <li>Using a knife, spread peanut butter on the top inside half of each roll.</li>
+                                                <li>Spread marshmallow fluff on the bottom center of each so that you have a sandwich filled with peanut butter and marshmallow fluff.</li>
+                                                <li>In a small bowl, whisk together the eggs, cream, sugar and vanilla.</li>
+                                                <li>Heat a medium skillet with butter on medium heat.</li>
+                                                <li>Dip each 'sandwich' in the egg mixture, letting it sit for 30 seconds per side and then transfer to hot pan. Let cook for about 4 minutes until golden brown, then flip for another 4 minutes until cooked through.</li>
+                                                <li>Transfer to a plate, top with powdered sugar, and serve hot.</li>
+                                            </ol>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End modal -->
+                        <div class="col-4 col-lg-3">
+                            <div class="card">
+                                <img class="card-img-top" src="./images/fluffernutter-french-toast.png" alt="Fluffernutter French Toast">
+                                <div class="caption">Image & recipe courtesy of <a href="https://www.tastemade.com/videos/fluffernutter-french-toast">tastemade.com</a></div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Give your peanut butter and marshmallow fluffernutter the French toast upgrade you know it deserves.</h5>
+                                    <p class="card-text">Give your peanut butter and marshmallow fluffernutter the French toast upgrade you know it deserves.</p>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fluffernutterFrenchToastModal">Get Recipe</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{bookData["book_title"]}}
+{% endblock %}
+
+{% block main %}
+    <h1>Book: {{bookData["book_title"]}}</h1>
+
+    <div class="row shelf-content justify-content-center">
+        <div class="row justify-content-around text-center">
+        <div class="col">
+            <!--This card pattern borrowed from https://getbootstrap.com/docs/4.1/components/card/-->
+            <div class="card">
+                {% if bookData["image_url"] %}
+                    <img class="card-img-top" src={{bookData["image_url"]}} alt={{bookData["book_title"]}}>
+                {% else %}
+                    <div class="row">
+                      <div class="col empty-content">
+                            <i class="fas fa-book fa-7x content-icon"></i>
+                      </div>
+                    </div>
+                {% endif %}
+                <!--<div class="caption">Image & recipe courtesy of <a href="https://hip2save.com/recipes/marshmallow-fluff-sandwich-marshmallow-creme/">hip2save.com</a></div>-->
+                <div class="card-body">
+                    <h5 class="card-title">{{bookData["book_title"]}}</h5>
+                    <p class="card-text"><b>Subtitle:</b> {{bookData["book_subtitle"]}}</p>
+                    <p class="card-text"><b>Description:</b> {{bookData["description"]}}</p>
+                    <p class="card-text"><b>Authors:</b> {{bookData["authors"]}}</p>
+                    <p class="card-text"><b>Categories:</b> {{bookData["categories"]}}</p>
+                    <p class="card-text"><b>Published Date:</b> {{bookData["published_date"]}}</p>
+                    <p class="card-text"><b>Page Count:</b> {{bookData["page_count"]}}</p>
+                    <p class="card-text"><b>ISBN 10:</b> {{bookData["isbn_10"]}}</p>
+                    <p class="card-text"><b>ISBN 13:</b> {{bookData["isbn_13"]}}</p>
+                    <span class="action-buttons col">
+                      <button type="button" class="action-icon update-book-{{bookData['id']}}" data-toggle="modal" data-target="#updateBookModal" aria-label="Update book">
+                        <i class="fas fa-edit"></i>
+                      </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('.update-book-{{bookData["id"]}}').data('book_data', {{bookData|tojson}});
+    </script>
+{% endblock %}
